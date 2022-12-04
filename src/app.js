@@ -14,12 +14,32 @@ form.addEventListener('submit', async (event) => {
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
-  console.log(response);
+  // console.log(response);
 
-  const dataObj = response.results[0];
-  const postImg = clone.querySelector('.post__img');
-  postImg.src = dataObj.urls.small;
-  postImg.alt = dataObj.alt_description;
+  const container = document.querySelector('.container');
+  const template = document.querySelector('#template');
+
+  let i = 0;
+  posts.forEach(post => {
+    i++;
+    if (i < 10) {
+      const newPost = document.importNode(postTemplate.content, true);
+
+      const postTitle = newPost.querySelector('.post__title');
+      const postBody = newPost.querySelector('.post__body');
+      const postImg = newPost.querySelector('.post__img')
+
+      const dataObj = response.results[0];
+
+      postImg.src = dataObj.urls.small;
+      postImg.alt = dataObj.alt_description;
+      postTitle.innerText = title;
+      postBody.innerText = body;
+
+      postSection.appendChild(newPost);
+
+    }).catch(err => console.log(err));
+}
 
   /*
     Loop through the results[] array. For each result, create a clone of the
