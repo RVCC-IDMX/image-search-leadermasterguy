@@ -29,8 +29,8 @@ form.addEventListener('submit', async (event) => {
       const cloneUser = newClone.querySelector('.post__user');
       const cloneDesc = newClone.querySelector('.post__desc');
 
-      cloneImg.src = dataObj.urls.small;
-      cloneImg.alt = dataObj.alt_description;
+      cloneImg.src = post.urls.small;
+      cloneImg.alt = post.alt_description;
       cloneUser.innerText = `By: ${post.user.first_name} ${post.user.last_name}`;
       if (post.description.length > 100) {
         cloneDesc.innerText = post.description;
