@@ -17,11 +17,10 @@ form.addEventListener('submit', async (event) => {
   console.log(response);
 
   /*
-  some sample code
-    const dataObj = response.results[0];
-    const postImg = clone.querySelector('.post__img');
-    postImg.src = dataObj.urls.small;
-    postImg.alt = dataObj.alt_description;
+  const dataObj = response.results[0];
+  const postImg = clone.querySelector('.post__img');
+  postImg.src = dataObj.urls.small;
+  postImg.alt = dataObj.alt_description;
   */
 
   /*
