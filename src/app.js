@@ -57,7 +57,7 @@ form.addEventListener('submit', async (event) => {
       })
     }
     catch (error) {
-      container.innerText = 'Invalid Results!'
+      container.textContent = 'Invalid Results!'
     }
   }
 }
