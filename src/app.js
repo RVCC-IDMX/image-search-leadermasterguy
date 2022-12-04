@@ -19,32 +19,38 @@ form.addEventListener('submit', async (event) => {
   const container = document.querySelector('.container');
   const template = document.querySelector('#template');
 
+  /*  Loop through the results[] array. For each result, create a clone of the
+     template and append it to the DOM element with the .container class. */
+
   let i = 0;
   posts.forEach(post => {
     i++;
     if (i < 10) {
-      const newPost = document.importNode(postTemplate.content, true);
+      const newClone = template.content.cloneNode(true);
 
-      const postTitle = newPost.querySelector('.post__title');
-      const postBody = newPost.querySelector('.post__body');
-      const postImg = newPost.querySelector('.post__img')
+      const cloneImg = newClone.querySelector('.post__img')
+      const cloneUser = newClone.querySelector('.post__user');
+      const cloneDesc = newClone.querySelector('.post__desc');
+
+      /* Add an attribution statement below the image using the
+    postUser element and the photographer's name from dataObj */
 
       const dataObj = response.results[0];
+      console.log(response.results[0]);
 
-      postImg.src = dataObj.urls.small;
-      postImg.alt = dataObj.alt_description;
-      postTitle.innerText = title;
-      postBody.innerText = body;
 
-      postSection.appendChild(newPost);
 
-    }).catch(err => console.log(err));
+      cloneImg.src = dataObj.urls.small;
+      cloneImg.alt = dataObj.alt_description;
+      cloneUser.innerText = post.user;
+      cloneDesc.innerText = 'AAAAAAAAAAAAAAAAAA';
+      container.appendChild(newClone);
+
+    }
+  }).catch(err => console.log(err));
 }
 
-  /*
-    Loop through the results[] array. For each result, create a clone of the
-    template and append it to the DOM element with the .container class.
-  */
+
 
   /*
     Add an attribution statement below the image using the
