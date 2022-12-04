@@ -14,8 +14,6 @@ form.addEventListener('submit', async (event) => {
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
-  // console.log(response);
-
   const container = document.querySelector('.container');
   const template = document.querySelector('#template');
 
@@ -31,8 +29,22 @@ form.addEventListener('submit', async (event) => {
 
       cloneImg.src = post.urls.small;
       cloneImg.alt = post.alt_description;
-      cloneUser.innerText = `By: ${post.user.first_name} ${post.user.last_name}`;
-      if (post.description.length > 100) {
+
+      const userFirst = post.user.first_name;
+      const userLast = post.user.last_name;
+      const userFull = `By: `
+      if (userFirst == null && userLast == null) {
+        cloneUser.innerText = userFull + 'Unknown Author';
+      } else if (userFirst != null) {
+        cloneUser.innerText = userFull + userFirst;
+      } if (userLast != null) {
+        cloneUser.innerText = userFull + userLast;
+      }
+
+      if (post.description.length == null) {
+        cloneDesc.innerText = 'No Description';
+      }
+      else if (post.description.length < 100) {
         cloneDesc.innerText = post.description;
       } else {
         cloneDesc.innerText = post.description.slice(0, 100) + '...';
