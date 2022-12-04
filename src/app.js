@@ -18,7 +18,7 @@ form.addEventListener('submit', async (event) => {
   const template = document.querySelector('#template');
 
   let i = 0;
-  response.results.forEach(post => {
+  response.results.map(post => {
     i++;
     if (i < 11) {
       const newClone = template.content.cloneNode(true);
@@ -51,7 +51,6 @@ form.addEventListener('submit', async (event) => {
       }
 
       container.appendChild(newClone);
-      return 0;
     }
   }).catch(err => console.log(err));
 }
