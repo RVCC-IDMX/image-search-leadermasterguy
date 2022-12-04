@@ -41,7 +41,7 @@ form.addEventListener('submit', async (event) => {
         cloneUser.innerText = userFull + userLast;
       }
 
-      if (post.description.length == null) {
+      if (post.description == null) {
         cloneDesc.innerText = 'No Description';
       }
       else if (post.description.length < 100) {
