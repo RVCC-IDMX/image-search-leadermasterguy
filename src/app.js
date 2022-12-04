@@ -18,9 +18,9 @@ form.addEventListener('submit', async (event) => {
   const template = document.querySelector('#template');
 
   let i = 0;
-  response.results.forEach(post => {
+  const responses = response.results.forEach(post => {
     i++;
-    if (i < 10) {
+    if (i < 11) {
       const newClone = template.content.cloneNode(true);
 
       const cloneImg = newClone.querySelector('.post__img')
